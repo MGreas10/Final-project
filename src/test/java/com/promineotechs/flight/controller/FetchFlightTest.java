@@ -15,7 +15,7 @@ class FetchFlightTest extends FetchFlightTestSupport {
 	@Test
 	void testThatListOfFlightsReturned() {
 		// given: a valid departure and arrival airports
-		System.out.println(getBaseUri());
+		
 		
 		// when: a connection is made
 		
