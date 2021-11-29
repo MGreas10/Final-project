@@ -49,6 +49,6 @@ public interface CustomerController {
 
     @PutMapping
     @ResponseStatus(code = HttpStatus.OK)
-    Customer updateCustomerPhone(@Valid @RequestBody Phone phone, @PathVariable Long customerId);
+    void updateCustomerPhone(@Valid @RequestBody Phone phone, @PathVariable Long customerId) throws Exception;
 //@formatter:on
 }

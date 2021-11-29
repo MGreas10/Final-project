@@ -19,8 +19,8 @@ public class BasicCustomerController implements CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    public Customer updateCustomerPhone(@Valid @RequestBody Phone phone, @PathVariable Long customerId) {
+    public void updateCustomerPhone(@Valid @RequestBody Phone phone, @PathVariable Long customerId) throws Exception {
         log.debug("phone={}, customerId={}", phone, customerId);
-        return customerService.updateCustomerPhone(phone, customerId);
+        customerService.updateCustomerPhone(phone, customerId);
     }
 }

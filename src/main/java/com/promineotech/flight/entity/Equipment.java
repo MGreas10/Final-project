@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @Builder
 public class Equipment {
-	  private Long id;
-	  private String description;
-	  private Long numberOfSeats;
-	  private String tailNumber;
+    private Long id;
+    private String description;
+    private Long numberOfSeats;
+    private String tailNumber;
 }
