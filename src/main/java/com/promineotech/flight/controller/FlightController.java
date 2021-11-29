@@ -26,10 +26,9 @@ import java.util.List;
 @OpenAPIDefinition(info = @Info(title = "Flight Service"),
         servers = {@Server(url = "http://localhost:8080", description = "Local server.")})
 public interface FlightController {
-
     // @formatter:off
     @Operation(summary = "Returns a list of flights",
-            description = "Returns a list of flights departing from a given airport on a giaven date",
+            description = "Returns a list of flights departing from a given airport on a given date",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -63,16 +62,13 @@ public interface FlightController {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     List<Flight> fetchFlightsFromAirportOnDate(
-            @Length(max = Constants.AIRPORT_CODE_MAX_LENGTH)
-            @Length(min = Constants.AIRPORT_CODE_MIN_LENGTH)
-            @Pattern(regexp = "[A-Z]{3}")
+            @Length(min = Constants.AIRPORT_CODE_MIN_LENGTH, max = Constants.AIRPORT_CODE_MAX_LENGTH)
+            @Pattern(regexp = Constants.AIRPORT_CODE_REGEX)
             @RequestParam(required = true)
                     String airportCode,
-            @Length(max = Constants.DATE_MAX_LENGTH)
-            @Length(min = Constants.DATE_MIN_LENGTH)
-            @Pattern(regexp = "[0-9]{4}-[0-9]{2}-[0-9]{2}")
+            @Length(min = Constants.DATE_MIN_LENGTH, max = Constants.DATE_MAX_LENGTH)
+            @Pattern(regexp = Constants.DATE_REGEX)
             @RequestParam(required = true)
                     String departureDate);
 //@formatter:on
-
 }
