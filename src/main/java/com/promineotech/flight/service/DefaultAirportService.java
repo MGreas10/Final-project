@@ -1,9 +1,8 @@
+// Erika Di Bella
 package com.promineotech.flight.service;
 
 import com.promineotech.flight.dao.AirportDao;
-import com.promineotech.flight.dao.FlightDao;
 import com.promineotech.flight.entity.Airport;
-import com.promineotech.flight.entity.Flight;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

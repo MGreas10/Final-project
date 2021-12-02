@@ -1,3 +1,4 @@
+// Erika Di Bella
 package com.promineotech.flight.dao;
 
 import com.promineotech.flight.entity.Phone;
@@ -5,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -30,8 +29,8 @@ public class DefaultCustomerDao implements CustomerDao {
         source.addValue("phone", phone.getPhone());
         source.addValue("customer_id", customerId);
 
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        if (0 == jdbcTemplate.update(sql, source, keyHolder)) {
+        long rowsAffected = jdbcTemplate.update(sql, source);
+        if (0 == rowsAffected) {
             throw new Exception("Customer ID Invalid");
         }
     }

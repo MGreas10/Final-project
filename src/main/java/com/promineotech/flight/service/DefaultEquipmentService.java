@@ -1,3 +1,4 @@
+// Erika Di Bella
 package com.promineotech.flight.service;
 
 import com.promineotech.flight.dao.EquipmentDao;
@@ -12,7 +13,7 @@ import java.util.NoSuchElementException;
 
 @Service
 @Slf4j
-public class DefaultEquipmentService implements EquipmentService{
+public class DefaultEquipmentService implements EquipmentService {
 
     @Autowired
     private EquipmentDao equipmentDao;

@@ -1,9 +1,8 @@
+// Erika Di Bella
 package com.promineotech.flight.controller;
 
-import com.promineotech.flight.entity.Customer;
 import com.promineotech.flight.entity.Phone;
 import com.promineotech.flight.service.CustomerService;
-import com.promineotech.flight.service.FlightService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

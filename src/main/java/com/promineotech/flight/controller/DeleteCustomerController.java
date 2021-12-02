@@ -1,7 +1,7 @@
-// Erika Di Bella
+// Marianne Greas
 package com.promineotech.flight.controller;
 
-import com.promineotech.flight.entity.Equipment;
+import com.promineotech.flight.entity.Customer;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -11,35 +11,29 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.Valid;
 
 @Validated
-@RequestMapping("/equipment")
-@OpenAPIDefinition(info = @Info(title = "Equipment Service"),
-        servers = {@Server(url = "http://localhost:8080", description = "Local server.")})
-public interface EquipmentController {
+@RequestMapping("/customer/{customerId}")
+@OpenAPIDefinition(info = @Info(title = "Delete Customer"), servers = {
+        @Server(url = "http://localhost:8080", description = "Local server.")})
+public interface DeleteCustomerController {
     // @formatter:off
-    @Operation(summary = "Returns a list of equipment",
-            description = "Returns a list of all equipment",
+    @Operation(summary = "Delete a customer",
+            description = "Delete a customer given customer id value",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "A list of equipment is returned",
+                            description = "A customer was successfully deleted",
                             content = @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = Equipment.class))),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "The request parameters are invalid",
-                            content = @Content(
-                                    mediaType = "application/json")),
+                                    schema = @Schema(implementation = Customer.class))),
+
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No airports were found with the input criteria",
+                            description = "No customer was found with the input criteria",
                             content = @Content(
                                     mediaType = "application/json")),
                     @ApiResponse(
@@ -49,8 +43,8 @@ public interface EquipmentController {
                                     mediaType = "application/json"))},
             parameters = {})
 
-    @GetMapping
+    @DeleteMapping
     @ResponseStatus(code = HttpStatus.OK)
-    List<Equipment> fetchEquipment();
-//@formatter:on
+    public void deleteCustomer(@Valid @PathVariable Long customerId) throws Exception;
+    //@formatter:on
 }
